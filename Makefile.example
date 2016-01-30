@@ -1,0 +1,14 @@
+BOOST_PATH=/path/to/boost
+
+CPPFLAGS += -std=c++0x -fopenmp -g -O2
+LIBS += -L${BOOST_PATH}/stage/lib/
+INC += -I${BOOST_PATH}
+
+all: computeMatches.bin
+
+%.bin: computeMatches.cpp
+	$(CXX) $(CPPFLAGS) $(INC) $< -o $@ $(LIBS)
+
+clean:
+	rm *.bin
+
